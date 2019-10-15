@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Artist</h1>
+        <div id="app"></div>
+    </div>
+   
+
+    <script>
+
+        fetch('http://localhost:9080/API/showall')
+        .then(response => response.json())
+        .then(data => {
+
+        //console.log(data["MSG"][1])
+
+        //${data["MSG"][2]["TITLE"]} ---> //for inside the document.querySelector
+        //<img style="width: 20%" src="${d["PICTURE"]}"  alt="${d["TITLE"]}">
+         
+        let results = data["MSG"].map(d => 
+            
+            `
+            <article class="media">
+                
+                <figure class="media-left">
+                    <p class="image is-64x64">
+                        
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                        <div class="columns is-mobile has-text-right has-font-heads">
+                        <div class="column"></div>
+                        <div class="column">${d["HOTDRINKS"]}</div>
+                        <div class="column">${d["QTY"]}</div>
+                        <div class="column">${d["SIZE"]}</div>
+                        <div class="column">${d["PRICE"]}</div>
+                        <div class="column">
+                        <a class="button is-medium is-warning " href="updatevideo.html?id=${d["ID"]}" >
+                            UPDATE
+                        </a>
+                        <a class="button is-medium is-danger" href="delete.html?id=${d["ID"]}" >
+                            DELETE
+                        </a> </div>
+                      </div>
+                    
+                </div>
+                <div class="media-right">
+                         
+                </div>
+            </article>
+
+            `
+            ).join("<br>")
+
+            document.querySelector('#app').innerHTML = results;
+        
+
+        })
+    </script>
+</body>
+</html>

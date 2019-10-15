@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>ADD</title>
+</head>
+<body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Add a Video</h1>
+                    <form>
+                        <div class="form-group">
+                            <label for="title">VIDEO TITLE</label>
+                            <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="Add title">
+                        </div>
+                        <div class="form-group">
+                            <label for="ytid">YOUTUBE ID</label>
+                            <input type="text" class="form-control" id="ytid" placeholder="YOUTUBE ID">
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            let button = document.querySelector('button')
+            button.addEventListener('click', (e) => {
+
+                e.preventDefault();
+            
+                let ytid = document.querySelector('#ytid').value
+                let imageURL = `http://i3.ytimg.com/vi/${ytid}/maxresdefault.jpg`
+                let embedURL = `https://www.youtube.com/embed/${ytid}`
+                let title =document.querySelector('#title').value
+
+                let data = {TITLE: title, LINK: embedURL, PICTURE: imageURL}
+
+                fetch('http://localhost:9080/api/addData',{
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }).then(resp => console.log(resp))
+                
+
+        })
+        </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+        <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+            <div class="column column"> </div>
+                <div class="navbar-brand">
+                  <a class="navbar-item" href="Home.html">
+                    <img src="Images/images/black_logo.PNG" width="180" height="500">
+                  </a>
+                  <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                  </a>
+                </div>
+              
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start has-font-navbar">
+                        <a class="navbar-item" href="home.html">
+                          HOME
+                        </a>
+                  
+                        <a class="navbar-item" href="menu.html">
+                          MENU
+                        </a>
+                        <a class="navbar-item" href="contact.html">
+                            CONTACT
+                         </a>
+                        <a class="navbar-item" href="feedback.html">
+                            FEEDBACK
+                        </a>
+                        <a class="navbar-item" href="openning&specials.html">
+                            OPENNING TIME & SPECIALS
+                        </a>
+                      </div>
+              
+                  <div class="navbar-end">
+                    <div class="navbar-item">
+                      <div class="buttons" >
+                        <a class="button is-light" href="login.html">
+                          LOGIN
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+    <div class="columns has-bg-Home is-centered">
+        <div class="column column is-four-fifths ">
+            <section class="columns column is-full is-centered">
+                <img class="image is-3" src="./Images/images/MAIN LOGO.PNG" alt="cat1">
+            </section>
+            <div class="columns is-mobile has-text-centered">
+                <div class="column"></div>
+                <div class="column">
+                    <h2 class="subtitle has-font-mainbody has-text-black">
+                        Location:<br>Next to the Event Cinema in Tauranga Central<br>
+                        Openning Hours:<br>Mon - Friday  7am - 4.30pm<br>
+                        Sat - Sun  7am - 2.30pm
+                        <br><br><br><br><br><br>
+                      </h2>
+                </div>
+                
+                <div class="column"></div>
+              </div>
+        </div>
+    </div>
+    <div class="columns is-mobile is-centered">
+        <div class="column"></div>
+        <div class="column">
+                    <h2 class="subtitle has-font-menu has-text-black">
+                        Kia ora and Welcome, Code Cafe is a new Cafe that will be base in Tauranga.
+                        Come along and join the locals in our fun and friendly atmosphere.
+                        Our goal is to offer great food and drinks at a reasonable price while maintaining great
+                        quality and service.
+                    </h2>
+        </div>
+        <div class="column">
+                    <h2 class="subtitle has-font-menu has-text-black">
+                      Cafe offers a lot of tables that a setup for anyone to bring thier laptop and we have free wifi when make a purchase had made.
+                    </h2>
+        </div>
+        <div class="column">
+                    <h2 class="subtitle has-font-menu has-text-black">
+                        We have daily specials available from Monday to Sunday.
+                      </h2>
+                      
+        </div>
+        <div class="column"></div>
+      </div>
+    <div class="columns is-mobile">
+        <div class="column"></div>
+        <div class="column">
+                <figure class="image" >
+                        <img src="./Images/images/pexels-photo-2347380.jpg" >
+                      </figure>
+        </div>
+        <div class="column">
+                <figure class="image">
+                        <img src="./Images/images/pexels-photo-160107.jpg">
+                      </figure>
+        </div>
+        <div class="column">
+            <a class="body-item" href="openning&specials.html">
+                <figure class="image"> 
+                  <img src="./Images/images/pexels-photo-2347311.jpg">
+                      </figure>
+                    </a>
+        </div>
+        <div class="column"></div>
+      </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            // Check if there are any navbar burgers
+            if ($navbarBurgers.length > 0) {
+
+                // Add a click event on each of them
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+
+                        // Get the target from the "data-target" attribute
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+
+                        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+
+                    });
+                });
+            }
+
+        });
+    </script>
+     <footer class="footer is-brown">
+        <div class="container">
+          <p class="column has-text-right has-text-white">
+            © 2019 Code Cafe
+          </p>
+        </div>
+      </footer>
+</body>
+
+</html>

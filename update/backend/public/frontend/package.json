@@ -1,0 +1,24 @@
+{
+  "name": "comp5209-tg-2019-s1-assignment-03-vfihaki",
+  "version": "1.0.0",
+  "description": "## Due Date = 14th June 2019 at 4:00pm",
+  "main": "index.js",
+  "dependencies": {
+    "bulma": "^0.7.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToiOhomaiBCS/comp5209-tg-2019-s1-assignment-03-vfihaki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ToiOhomaiBCS/comp5209-tg-2019-s1-assignment-03-vfihaki/issues"
+  },
+  "homepage": "https://github.com/ToiOhomaiBCS/comp5209-tg-2019-s1-assignment-03-vfihaki#readme"
+}
