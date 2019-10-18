@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Artist</h1>
+        <div id="app"></div>
+    </div>
+   
+
+    <script>
+
+        fetch('http://localhost:9080/API/showall')
+        .then(response => response.json())
+        .then(data => {
+
+        //console.log(data["MSG"][1])
+
+        //${data["MSG"][2]["TITLE"]} ---> //for inside the document.querySelector
+        //<img style="width: 20%" src="${d["PICTURE"]}"  alt="${d["TITLE"]}">
+         
+        let results = data["MSG"].map(d => 
+            
+            `
+            <article class="media">
+                
+                <figure class="media-left">
+                    <p class="image is-64x64">
+                        <img src="${d["PICTURE"]}">
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                    <h2>${d["TITLE"]}</h2>
+                    <iframe src="${d["LINK"]}" style="border:0; width: 500px; height: 250px"></iframe>
+                </div>
+                <div class="media-right">
+                        <a class="button is-medium is-warning " href="updatevideo.html?id=${d["ID"]}" >
+                            UPDATE
+                        </a>
+                        <a class="button is-medium is-danger" href="delete.html?id=${d["ID"]}" >
+                            DELETE
+                        </a>  
+                </div>
+            </article>
+
+            `
+            ).join("<br>")
+
+            document.querySelector('#app').innerHTML = results;
+        
+
+        })
+    </script>
+</body>
+</html>

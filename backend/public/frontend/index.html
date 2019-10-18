@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <title>Document</title>
+</head>
+<body>
+    
+            <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+                    <div class="column column"> </div>
+                <div class="navbar-brand">
+                  <a class="navbar-item" href="Home.html">
+                    <img src="./Images/images/black_logo.PNG" width="180" height="28">
+                  </a>
+                  <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                  </a>
+                </div>
+                <div id="navbarBasicExample" class="navbar-menu">
+                        <div class="navbar-start has-font-navbar">
+                                <a class="navbar-item" href="home.html">
+                                  HOME
+                                </a>
+                          
+                                <a class="navbar-item" href="menu.html">
+                                  MENU
+                                </a>
+                                <a class="navbar-item" href="contact.html">
+                                    CONTACT
+                                 </a>
+                                <a class="navbar-item" href="feedback.html">
+                                    FEEDBACK
+                                </a>
+                                <a class="navbar-item" href="openning&specials.html">
+                                    OPENNING TIME & SPECIALS
+                                </a>
+                              </div>
+            
+                  <div class="navbar-end">
+                    <div class="navbar-item">
+                      <div class="buttons">
+                        <a class="button is-light" href="login.html">
+                          LOGIN
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+        <div class="container">
+        <h1 class="title has-text-centered has-font-head">MENU</h1>
+        <div class="columns is-desktop has-text-black ">
+                
+                <div class="column">
+                    <h2 class="title has-text-centered has-font-head">
+                        HOT DRINKS MENU  
+                    </h2>   
+                    <a class="button is-medium is-info" href="addhotdrinks.html">
+                            ADD
+                        </a>
+                    <div class="column">
+                            
+                        </div>           
+                </div>
+                <div class="column">
+                    <h2 class="title has-text-centered has-font-head">
+                            COLD DRINKS MENU
+                    </h2> 
+                    <a class="button is-medium is-info" href="addhotdrinks.html">
+                            ADD
+                        </a>     
+                </div>
+                
+                <div class="column">
+                    <h2 class="title has-text-centered has-font-head">
+                        IN-HOUSE FOOD MENU
+                    </h2> 
+                    <a class="button is-medium is-info" href="addhotdrinks.html">
+                            ADD
+                        </a>  
+                </div>
+                
+              </div>
+              <h1 class="title has-text-left has-font-head" id="demo" id="demo1" id="demo2"></h1>
+              <h1 class="title has-text-centered has-font-head" id="demo1"></h1>
+              <h1 class="title has-text-right has-font-head" id="demo2"></h1>
+        <div id="app"></div>
+    </div>
+   
+
+    <script>
+        fetch('http://localhost:9080/API/showall')
+        .then(response => response.json())
+        .then(data => {
+        let results = data["MSG"].map(d => 
+            
+            `
+            <article class="media">
+            <figure class="media-left">
+                
+                    <div class="content">
+                        <div class="columns is-mobile has-text-right has-font-heads">
+                        <div class="column">${d["HOTDRINKS"]}</div>
+                        <div class="column"></div>
+                        <div class="column">${d["QTY"]}</div>
+                        <div class="column"></div>
+                        <div class="column">${d["SIZE"]}</div>
+                        <div class="column"></div>
+                        <div class="column">${d["PRICE"]}</div>
+                        <div class="column">
+                        <a class="button is-medium is-warning " href="updatehotdrinks.html?id=${d["ID"]}" >
+                            UPDATE
+                        </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-medium is-danger" href="delete.html?id=${d["ID"]}" >
+                            DELETE
+                        </a> 
+                        </div>
+                      </div>
+                      <div class="column"></div>
+                </figure>
+                
+                <figure class="media-content">
+                        <div class="content">
+                        
+                        <div class="columns is-mobile has-text-right has-font-heads">
+                        <div class="column">${d["HOTDRINKS"]}</div>
+                        <div class="column"></div>
+                        <div class="column">${d["QTY"]}</div>
+                        <div class="column"></div>
+                        <div class="column">${d["SIZE"]}</div>
+                        <div class="column"></div>
+                        <div class="column">${d["PRICE"]}</div>
+                        <div class="column">
+                        <a class="button is-medium is-warning " href="updatehotdrinks.html?id=${d["ID"]}" >
+                            UPDATE
+                        </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-medium is-danger" href="delete.html?id=${d["ID"]}" >
+                            DELETE
+                        </a> 
+                        </div>
+                      </div>
+                      <div class="column"></div>
+                </figure>
+                <figure class="media-right">
+                        <div class="content">
+                        
+                        <div class="columns is-mobile has-text-right has-font-heads">
+                        <div class="column">${d["HOTDRINKS"]}</div>
+                        <div class="column"></div>
+                        <div class="column">${d["QTY"]}</div>
+                        <div class="column"></div>
+                        <div class="column">${d["SIZE"]}</div>
+                        <div class="column"></div>
+                        <div class="column">${d["PRICE"]}</div>
+                        <div class="column">
+                        <a class="button is-medium is-warning " href="updatehotdrinks.html?id=${d["ID"]}" >
+                            UPDATE
+                        </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-medium is-danger" href="delete.html?id=${d["ID"]}" >
+                            DELETE
+                        </a> 
+                        </div>
+                      </div>
+                      <div class="column"></div>
+                </figure>
+            </article>
+
+            `
+            ).join("<br>")
+
+            document.querySelector('#app').innerHTML = results;
+        
+
+        })
+    </script>
+</body>
+</html>
