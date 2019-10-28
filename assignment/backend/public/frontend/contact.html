@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contact</title>
+  <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar is-black " role="navigation" aria-label="main navigation">
+        <div class="column column"> </div>
+        <div class="navbar-brand">
+          <a class="navbar-item" href="Home.html">
+            <img src="Images/images/black_logo.PNG" width="180" height="28">
+          </a>
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start has-font-navbar">
+            <a class="navbar-item" href="home.html">
+              HOME
+            </a>
+      
+            <a class="navbar-item" href="menu.html">
+              MENU
+            </a>
+            <a class="navbar-item" href="contact.html">
+                CONTACT
+             </a>
+            <a class="navbar-item" href="feedback.html">
+                FEEDBACK
+            </a>
+            <a class="navbar-item" href="openning&specials.html">
+                OPENNING TIME & SPECIALS
+            </a>
+          </div>      
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-light" href="login.html">
+                  LOGIN
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="columns has-bg-img">
+          <div class="column column"></div>
+          <div class="column column is-four-fifths ">
+            <div class="columns is-mobile">
+              <div class="column is-three-fifths is-offset-one-fifth">
+                  <div class="container">
+                      <h1 class="title has-text-centered has-font-header">
+                          <br>
+                        Contact Us                        
+                      </h1>
+                      <h2 class="subtitle has-font-body">
+                        <br>
+                          If you want to get in contact with our team, simply fill up the form below. Cheers!!
+                      </h2>
+                    </div>
+              </div>
+            </div>
+            <div class="columns is-mobile">
+                <div class="column is-half is-offset-one-quarter">
+                  <div class="container is-fluid is-two-fifths">
+                    <div class="field">
+                        <h2 class="subtitle has-font-body has-text-black">
+                            Name
+                          </h2>
+                      <div class="control">
+                        <input class="input" type="text" id="names" placeholder="Full Name....">
+                      </div>
+                    </div>
+                    <div class="field">
+                        <h2 class="subtitle has-font-body has-text-black">
+                            Email
+                          </h2>
+                      <div class="control">
+                        <input class="input" type="email" id="email" placeholder="Your Email Address....." value="">
+                      </div>
+                    </div>
+                    <div class="field">
+                        <h2 class="subtitle has-font-body has-text-black">
+                            Message
+                          </h2>
+                      <div class="control">
+                        <textarea class="textarea" id= "messages" placeholder="Enter you message here......"></textarea>
+                      </div>
+                    </div>
+                    <div class="field is-grouped">
+                      <div class="control">
+                          <button type="submit" class="btn btn-primary">SEND</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="column">
+          </div>
+        </div> 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+// Get all "navbar-burger" elements
+const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+// Check if there are any navbar burgers
+if ($navbarBurgers.length > 0) {
+
+// Add a click event on each of them
+$navbarBurgers.forEach( el => {
+el.addEventListener('click', () => {
+
+// Get the target from the "data-target" attribute
+const target = el.dataset.target;
+const $target = document.getElementById(target);
+
+// Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+el.classList.toggle('is-active');
+$target.classList.toggle('is-active');
+
+});
+});
+}
+
+});
+    </script>
+     <script>
+
+      let button = document.querySelector('button')
+      button.addEventListener('click', (e) => {
+
+          e.preventDefault();
+      
+          let names =document.querySelector('#names').value
+          let email =document.querySelector('#email').value
+          let messages =document.querySelector('#messages').value
+
+
+          let data = {NAMES: names, EMAIL: email, MESSAGES: messages}
+
+          fetch('http://localhost:9080/contact/addData',{
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+          }).then(resp => console.log(resp))
+          
+
+  })
+  </script>
+     <footer class="footer is-brown">
+        <div class="container">
+          <p class="column has-text-right has-text-white">
+            © 2019 Code Cafe
+          </p>
+        </div>
+      </footer>
+</body>
+
+</html>

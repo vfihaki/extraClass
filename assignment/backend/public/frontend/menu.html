@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <title>Menu</title>
+</head>
+<body>
+        <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+            <div class="column column"> </div>
+            <div class="navbar-brand">
+                <a class="navbar-item" href="Home.html">
+                <img src="Images/images/black_logo.PNG" width="180" height="500">
+                </a>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+            </div>
+                  
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start has-font-navbar">
+                    <a class="navbar-item" href="home.html">
+                        HOME
+                    </a>
+                
+                    <a class="navbar-item" href="menu.html">
+                        MENU
+                    </a>
+                    <a class="navbar-item" href="contact.html">
+                        CONTACT
+                        </a>
+                    <a class="navbar-item" href="feedback.html">
+                        FEEDBACK
+                    </a>
+                    <a class="navbar-item" href="openning&specials.html">
+                        OPENNING TIME & SPECIALS
+                    </a>
+                </div>            
+                <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons" >
+                    <a class="button is-light" href="login.html">
+                        LOGIN
+                    </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </nav>
+        <div class="columns has-bg-img">
+                <div class="column column">
+                </div>
+                <div class="column column is-four-fifths ">
+                  <div class="columns is-mobile">
+                    <div class="column is-three-fifths is-offset-one-fifth">
+                      <div class="container">
+                        <h1 class="title has-text-centered has-font-header">
+                          <br>
+                          MENU
+                        </h1>            
+                      </div>         
+                    </div>
+                  </div>
+                 
+                </div>
+                <div class="column"></div>
+              </div>
+              <div class="columns is-mobile">
+                    <div class="column"></div>
+                    <div class="column">
+                            <figure class="image is-4by3">
+                                    <img src="./Images/images/pexels-photo-2347380.jpg">
+                                  </figure>
+                    </div>
+                    <div class="column">
+                            <figure class="image is-4by3">
+                                    <img src="./Images/images/cold-brew-cafe-1-e1470779633331.jpeg">
+                                  </figure>
+                    </div>
+                    <div class="column">
+                            <figure class="image is-4by3">
+                                    <img src="./Images/images/pexels-photo-2347311.jpg">
+                                  </figure>
+                    </div>
+                    <div class="column"></div>
+                  </div>
+              <div class="columns">
+                    <div class="column is-mobile">
+                    </div>
+                    <div class="column">
+                            <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>HOT DRINKS</th>
+                                        <th>QTY</th>
+                                        <th>SIZE</th>
+                                        <th>PRICE</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>   
+                                <div id="app"></div>                      
+                    </div>
+                    <div class="column is-mobile">
+                            <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>COLD DRINKS</th>
+                                        <th>QTY</th>
+                                        <th>SIZE</th>
+                                        <th>PRICE</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                                <div id="app2"></div>
+                    </div>
+                    <div class="column is-mobile">
+                            <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>FOOD</th>
+                                        <th>QTY</th>
+                                        <th>PRICE</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                            <div id="app3"></div>
+                    </div>
+                    <div class="column">
+                    </div>
+                    
+                  </div>
+    
+    <script>
+
+        fetch('http://localhost:9080/Hotdrinks/showall')
+        .then(response => response.json())
+        .then(data => {
+         
+        let results = data["MSG"].map(a => 
+            
+            `
+                        <table class="table">
+                
+                <tr>
+                    <th>${a["HOTDRINKS"]}</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>${a["QTY"]}</td>
+                    <td></td>
+                    <td>${a["SIZE"]}</td>
+                    <td></td>
+                    <td>${a["PRICE"]}</td>
+                    
+                </tr>
+            </table>
+
+               
+            
+            `
+            ).join("<br>")
+
+            document.querySelector('#app').innerHTML = results;
+        })
+        .then(script => fetch('http://localhost:9080/Colddrinks/showall'))
+        .then(response => response.json())
+        .then(data => {
+         
+        let results1 = data["MSG"].map(b => 
+            
+            `
+            <table class="table">
+                <tr>
+                    <th>${b["COLDDRINKS"]}</th>
+                    <td></td>
+                    <td></td>
+                    <td>${b["QTY"]}</td>
+                    <td></td>
+                    <td>${b["SIZE"]}</td>
+                    <td></td>
+                    <td>${b["PRICE"]}</td>
+                    
+                </tr>
+            </table>
+            
+            `
+            ).join("<br>")
+
+            document.querySelector('#app2').innerHTML = results1;
+        })
+        .then(script => fetch('http://localhost:9080/Food/showall'))
+        .then(response => response.json())
+        .then(data => {
+         
+        let results2 = data["MSG"].map(c => 
+            
+            `
+                <table class="table"
+                <tr>
+                    <th>${c["FOOD"]}</th>
+                    <td>${c["QTY"]}</td>
+                    <td></td>
+                    <td>${c["PRICE"]}</td>
+                    
+            </table>
+            
+            `
+            ).join("<br>")
+
+            document.querySelector('#app3').innerHTML = results2;
+        })
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+     <footer class="footer is-info">
+       <div class="container">
+         <p class="column has-text-right has-text-white">
+           © 2019 Code Cafe
+         </p>
+       </div>
+     </footer>
+</body>
+</html>
