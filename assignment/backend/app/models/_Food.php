@@ -19,27 +19,26 @@
     }
 
     //example: db data - select
-    public function showAll() {
+    public function showAllFood() {
       $this->db->query('SELECT * FROM tbl_food');
       return $this->db->resultSet();
     }
 
     //example db data - select with id
-    public function showSingle($id) {
+    public function showSingleFood($id) {
       $this->db->query('SELECT * FROM tbl_food WHERE ID = :id');
       $this->db->bind(':id', $id);
       return $this->db->resultSet();
     }
 
     //exaple: db data - insert
-    public function add($data) {
+    public function addFood($data) {
 
       //Adding data to database
-      $this->db->query('INSERT INTO  tbl_food (FOOD, QTY, PRICE) VALUES (:food, :qty, :price)');
+      $this->db->query('INSERT INTO  tbl_food (FOOD, PRICE) VALUES (:food, :price)');
 
       //Binding Variables
       $this->db->bind(':food', $data["FOOD"]);
-      $this->db->bind(':qty', $data["QTY"]);
       $this->db->bind(':price', $data["PRICE"]);
 
       //Return true or false, based on if query is successful or not
@@ -51,15 +50,14 @@
     }
 
     //exaple: db data - update
-    public function update($data, $id) {
+    public function updateFood($data, $id) {
 
       //Adding data to database
-      $this->db->query('UPDATE tbl_food SET FOOD = :food, QTY = :qty, PRICE = :price WHERE ID = :id');
+      $this->db->query('UPDATE tbl_food SET FOOD = :food, PRICE = :price WHERE ID = :id');
 
       //Binding Variables
       $this->db->bind(':id', $id);
       $this->db->bind(':food', $data["FOOD"]).value;
-      $this->db->bind(':qty', $data["QTY"]).value;
       $this->db->bind(':price', $data["PRICE"]).value;
 
       //Return true or false, based on if query is successful or not
@@ -71,7 +69,7 @@
     }
 
     //exaple: db data - delete
-    public function delete($id) {
+    public function deleteFood($id) {
 
       //Adding data to database
       $this->db->query('DELETE FROM tbl_food WHERE ID = :id');

@@ -18,38 +18,38 @@ class Hotdrinks extends Controller {
   }
 
   //Match the functions below to your requiredments
-  public function showAll() {
-    echo json_encode(["MSG" => $this->rest->showAll(), "CODE" => 200]);
+  public function showAllHotdrinks() {
+    echo json_encode(["MSG" => $this->rest->showAllHotdrinks(), "CODE" => 200]);
   }
 
-  public function showSingle() {
-    echo json_encode(["MSG" => $this->rest->showSingle(getIdFromURL())]);
+  public function showSingleHotdrinks() {
+    echo json_encode(["MSG" => $this->rest->showSingleHotdrinks(getIdFromURL())]);
   }
 
-  public function addData() {
+  public function addHotdrinks() {
       $data = json_decode(file_get_contents("php://input"), true);
 
-      if($this->rest->add($data)) {
+      if($this->rest->addHotdrinks($data)) {
           echo json_encode(array("MSG" => "Record Added Successfully", "Data" => $data, "CODE" => 201));
       } else {
           echo json_encode(array("MSG" => "Record was not added", "Data" => $data));
       }
   }
 
-  public function updateData() {
+  public function updateHotdrinks() {
 
     $data = json_decode(file_get_contents("php://input"), true);
 
     $id = $data["ID"];
 
-    if($this->rest->update($data, $id)) {
+    if($this->rest->updateHotdrinks($data, $id)) {
         echo json_encode(array("MSG" => "Record Updated Successfully", "Data" => $data, "CODE" => 204));
     } else {
         echo json_encode(array("MSG" => "Record was not updated", "Data" => $data));
     }
   }
 
-  public function deleteData() {
+  public function deleteHotdrinks() {
 
     $data = json_decode(file_get_contents("php://input"), true);
 

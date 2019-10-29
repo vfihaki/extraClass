@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <title>Menu</title>
+    <title>Admin Menu</title>
 </head>
 <body>
         <nav class="navbar is-black" role="navigation" aria-label="main navigation">
@@ -98,10 +98,9 @@
                                     <thead>
                                     <tr>
                                         <th>HOT DRINKS</th>
-                                        <th>QTY</th>
-                                        <th>SIZE</th>
-                                        <th>PRICE</th>
-                                        <th></th>
+                                        <th>LARGE</th>
+                                        <th>MEDIUM</th>
+                                        <th>SMALL</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -115,10 +114,10 @@
                                     <thead>
                                     <tr>
                                         <th>COLD DRINKS</th>
-                                        <th>QTY</th>
-                                        <th>SIZE</th>
-                                        <th>PRICE</th>
-                                        <th></th>
+                                        <td></td>
+                                        <th>LARGE</th>
+                                        <th>MEDIUM</th>
+                                        <th>SMALL</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -132,9 +131,7 @@
                                     <thead>
                                     <tr>
                                         <th>FOOD</th>
-                                        <th>QTY</th>
                                         <th>PRICE</th>
-                                        <th></th>
                                     </tr>
                                     </thead>
                                 <tbody>
@@ -150,7 +147,7 @@
     
     <script>
 
-        fetch('http://localhost:9080/Hotdrinks/showall')
+        fetch('http://localhost:9080/Hotdrinks/showallHotdrinks')
         .then(response => response.json())
         .then(data => {
          
@@ -163,13 +160,13 @@
                     <th>${a["HOTDRINKS"]}</th>
                     <td></td>
                     <td></td>
+                    <td>${a["LARGE"]}</td>
                     <td></td>
-                    <td>${a["QTY"]}</td>
                     <td></td>
-                    <td>${a["SIZE"]}</td>
+                    <td>${a["MEDIUM"]}</td>
                     <td></td>
-                    <td>${a["PRICE"]}</td>
-                    
+                    <td></td>
+                    <td>${a["SMALL"]}</td>
                 </tr>
             </table>
 
@@ -180,7 +177,7 @@
 
             document.querySelector('#app').innerHTML = results;
         })
-        .then(script => fetch('http://localhost:9080/Colddrinks/showall'))
+        .then(script => fetch('http://localhost:9080/Colddrinks/showallColddrinks'))
         .then(response => response.json())
         .then(data => {
          
@@ -191,13 +188,11 @@
                 <tr>
                     <th>${b["COLDDRINKS"]}</th>
                     <td></td>
+                    <td>${b["LARGE"]}</td>
                     <td></td>
-                    <td>${b["QTY"]}</td>
+                    <td>${b["MEDIUM"]}</td>
                     <td></td>
-                    <td>${b["SIZE"]}</td>
-                    <td></td>
-                    <td>${b["PRICE"]}</td>
-                    
+                    <td>${b["SMALL"]}</td>
                 </tr>
             </table>
             
@@ -206,7 +201,7 @@
 
             document.querySelector('#app2').innerHTML = results1;
         })
-        .then(script => fetch('http://localhost:9080/Food/showall'))
+        .then(script => fetch('http://localhost:9080/Food/showallFood'))
         .then(response => response.json())
         .then(data => {
          
@@ -216,10 +211,8 @@
                 <table class="table"
                 <tr>
                     <th>${c["FOOD"]}</th>
-                    <td>${c["QTY"]}</td>
-                    <td></td>
                     <td>${c["PRICE"]}</td>
-                    
+                    </tr>
             </table>
             
             `

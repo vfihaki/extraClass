@@ -18,42 +18,42 @@ class Food extends Controller {
   }
 
   //Match the functions below to your requiredments
-  public function showAll() {
-    echo json_encode(["MSG" => $this->rest->showAll(), "CODE" => 200]);
+  public function showAllFood() {
+    echo json_encode(["MSG" => $this->rest->showAllFood(), "CODE" => 200]);
   }
 
-  public function showSingle() {
+  public function showSingleFood() {
     echo json_encode(["MSG" => $this->rest->showSingle(getIdFromURL())]);
   }
 
-  public function addData() {
+  public function addFood() {
       $data = json_decode(file_get_contents("php://input"), true);
 
-      if($this->rest->add($data)) {
+      if($this->rest->addFood($data)) {
           echo json_encode(array("MSG" => "Record Added Successfully", "Data" => $data, "CODE" => 201));
       } else {
           echo json_encode(array("MSG" => "Record was not added", "Data" => $data));
       }
   }
 
-  public function updateData() {
+  public function updateFood() {
 
     $data = json_decode(file_get_contents("php://input"), true);
 
     $id = $data["ID"];
 
-    if($this->rest->update($data, $id)) {
+    if($this->rest->updateFood($data, $id)) {
         echo json_encode(array("MSG" => "Record Updated Successfully", "Data" => $data, "CODE" => 204));
     } else {
         echo json_encode(array("MSG" => "Record was not updated", "Data" => $data));
     }
   }
 
-  public function deleteData() {
+  public function deleteFood() {
 
     $data = json_decode(file_get_contents("php://input"), true);
 
-    if($this->rest->delete(getIdFromURL())) {
+    if($this->rest->deleteFood(getIdFromURL())) {
         echo json_encode(array("MSG" => "Record Deleted Successfully", "Data" => $data, "CODE" => 202));
     } else {
         echo json_encode(array("MSG" => "Record was not deleted", "Data" => $data));

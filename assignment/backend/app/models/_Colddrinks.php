@@ -19,20 +19,20 @@
     }
 
     //example: db data - select
-    public function showAll() {
+    public function showAllColddrinks() {
       $this->db->query('SELECT * FROM tbl_colddrinks');
       return $this->db->resultSet();
     }
 
     //example db data - select with id
-    public function showSingle($id) {
+    public function showSingleColddrinks($id) {
       $this->db->query('SELECT * FROM tbl_colddrinks WHERE ID = :id');
       $this->db->bind(':id', $id);
       return $this->db->resultSet();
     }
 
     //exaple: db data - insert
-    public function add($data) {
+    public function addColddrinks($data) {
 
       //Adding data to database
       $this->db->query('INSERT INTO  tbl_colddrinks (COLDDRINKS, QTY, SIZE, PRICE) VALUES (:colddrinks, :qty, :size, :price)');
@@ -52,7 +52,7 @@
     }
 
     //exaple: db data - update
-    public function update($data, $id) {
+    public function updateColddrinks($data, $id) {
 
       //Adding data to database
       $this->db->query('UPDATE tbl_colddrinks SET COLDDRINKS = :colddrinks, QTY = :qty, SIZE = :size, PRICE = :price WHERE ID = :id');
@@ -73,7 +73,7 @@
     }
 
     //exaple: db data - delete
-    public function delete($id) {
+    public function deleteColddrinks($id) {
 
       //Adding data to database
       $this->db->query('DELETE FROM tbl_colddrinks WHERE ID = :id');

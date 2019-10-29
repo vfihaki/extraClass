@@ -19,29 +19,29 @@
     }
 
     //example: db data - select
-    public function showAll() {
+    public function showAllHotdrinks() {
       $this->db->query('SELECT * FROM tbl_hotdrinks');
       return $this->db->resultSet();
     }
 
     //example db data - select with id
-    public function showSingle($id) {
+    public function showSingleHotdrinks($id) {
       $this->db->query('SELECT * FROM tbl_hotdrinks WHERE ID = :id');
       $this->db->bind(':id', $id);
       return $this->db->resultSet();
     }
 
     //exaple: db data - insert
-    public function add($data) {
+    public function addHotdrinks($data) {
 
       //Adding data to database
-      $this->db->query('INSERT INTO  tbl_hotdrinks (HOTDRINKS, QTY, SIZE, PRICE) VALUES (:hotdrinks, :qty, :size, :price)');
+      $this->db->query('INSERT INTO  tbl_hotdrinks (HOTDRINKS, LARGE, MEDIUM, SMALL) VALUES (:hotdrinks, :large, :medium, :small)');
 
       //Binding Variables
       $this->db->bind(':hotdrinks', $data["HOTDRINKS"]);
-      $this->db->bind(':qty', $data["QTY"]);
-      $this->db->bind(':size', $data["SIZE"]);
-      $this->db->bind(':price', $data["PRICE"]);
+      $this->db->bind(':large', $data["LARGE"]);
+      $this->db->bind(':medium', $data["MEDIUM"]);
+      $this->db->bind(':small', $data["SMALL"]);
 
       //Return true or false, based on if query is successful or not
       if($this->db->execute()) {
@@ -52,17 +52,17 @@
     }
 
     //exaple: db data - update
-    public function update($data, $id) {
+    public function updateHotdrinks($data, $id) {
 
       //Adding data to database
-      $this->db->query('UPDATE tbl_hotdrinks SET HOTDRINKS = :hotdrinks, QTY = :qty, SIZE = :size, PRICE = :price WHERE ID = :id');
+      $this->db->query('UPDATE tbl_hotdrinks SET HOTDRINKS = :hotdrinks, LARGE = :large, MEDIUM = :medium, SMALL = :small WHERE ID = :id');
 
       //Binding Variables
       $this->db->bind(':id', $id);
       $this->db->bind(':hotdrinks', $data["HOTDRINKS"]).value;
-      $this->db->bind(':qty', $data["QTY"]).value;
-      $this->db->bind(':size', $data["SIZE"]).value;
-      $this->db->bind(':price', $data["PRICE"]).value;
+      $this->db->bind(':large', $data["LARGE"]).value;
+      $this->db->bind(':medium', $data["MEDIUM"]).value;
+      $this->db->bind(':small', $data["SMALL"]).value;
 
       //Return true or false, based on if query is successful or not
       if($this->db->execute()) {
@@ -73,7 +73,7 @@
     }
 
     //exaple: db data - delete
-    public function delete($id) {
+    public function deleteHotdrinks($id) {
 
       //Adding data to database
       $this->db->query('DELETE FROM tbl_hotdrinks WHERE ID = :id');

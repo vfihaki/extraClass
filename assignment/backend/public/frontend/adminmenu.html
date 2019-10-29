@@ -98,9 +98,9 @@
                                     <thead>
                                     <tr>
                                         <th>HOT DRINKS</th>
-                                        <th>QTY</th>
-                                        <th>SIZE</th>
-                                        <th>PRICE</th>
+                                        <th>LARGE</th>
+                                        <th>MEDIUM</th>
+                                        <th>SMALL</th>
                                         <th>
                                             <a class="button is-small is-info " href="addhotdrinks.html" >
                                                 ADD
@@ -119,9 +119,9 @@
                                     <thead>
                                     <tr>
                                         <th>COLD DRINKS</th>
-                                        <th>QTY</th>
-                                        <th>SIZE</th>
-                                        <th>PRICE</th>
+                                        <th>LARGE</th>
+                                        <th>MEDIUM</th>
+                                        <th>SMALL</th>
                                         <th>
                                             <a class="button is-small is-info " href="addhotdrinks.html" >
                                                 ADD
@@ -140,7 +140,6 @@
                                     <thead>
                                     <tr>
                                         <th>FOOD</th>
-                                        <th>QTY</th>
                                         <th>PRICE</th>
                                         <th>
                                             <a class="button is-small is-info " href="addhotdrinks.html" >
@@ -162,7 +161,7 @@
     
     <script>
 
-        fetch('http://localhost:9080/Hotdrinks/showall')
+        fetch('http://localhost:9080/Hotdrinks/showallHotdrinks')
         .then(response => response.json())
         .then(data => {
          
@@ -176,13 +175,15 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>${a["QTY"]}</td>
+                    <td>${a["LARGE"]}</td>
                     <td></td>
-                    <td>${a["SIZE"]}</td>
                     <td></td>
-                    <td>${a["PRICE"]}</td>
+                    <td>${a["MEDIUM"]}</td>
+                    <td></td>
+                    <td></td>
+                    <td>${a["SMALL"]}</td>
                     <td>
-                        <a class="button is-small is-warning" href="updatevideo.html?id=${a["ID"]}" >
+                        <a class="button is-small is-warning" href="updatehotdrinks.html?id=${a["ID"]}" >
                             UPDATE
                         </a>
                     </td>
@@ -201,7 +202,7 @@
 
             document.querySelector('#app').innerHTML = results;
         })
-        .then(script => fetch('http://localhost:9080/Colddrinks/showall'))
+        .then(script => fetch('http://localhost:9080/Colddrinks/showallColddrinks'))
         .then(response => response.json())
         .then(data => {
          
@@ -213,13 +214,13 @@
                     <th>${b["COLDDRINKS"]}</th>
                     <td></td>
                     <td></td>
-                    <td>${b["QTY"]}</td>
+                    <td>${b["LARGE"]}</td>
                     <td></td>
-                    <td>${b["SIZE"]}</td>
+                    <td>${b["MEDIUM"]}</td>
                     <td></td>
-                    <td>${b["PRICE"]}</td>
+                    <td>${b["SMALL"]}</td>
                     <td>
-                        <a class="button is-small is-warning " href="updatevideo.html?id=${b["ID"]}" >
+                        <a class="button is-small is-warning " href="updatecolddrinks.html?id=${b["ID"]}" >
                             UPDATE
                         </a>
                     </td>
@@ -236,7 +237,7 @@
 
             document.querySelector('#app2').innerHTML = results1;
         })
-        .then(script => fetch('http://localhost:9080/Food/showall'))
+        .then(script => fetch('http://localhost:9080/Food/showallFood'))
         .then(response => response.json())
         .then(data => {
          
@@ -246,11 +247,10 @@
                 <table class="table"
                 <tr>
                     <th>${c["FOOD"]}</th>
-                    <td>${c["QTY"]}</td>
-                    <td></td>
                     <td>${c["PRICE"]}</td>
+                    <td></td>
                     <td>
-                        <a class="button is-small is-warning " href="updatevideo.html?id=${c["ID"]}" >
+                        <a class="button is-small is-warning " href="updatefood.html?id=${c["ID"]}" >
                             UPDATE
                         </a>
                     </td>
