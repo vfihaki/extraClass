@@ -35,13 +35,13 @@
     public function addColddrinks($data) {
 
       //Adding data to database
-      $this->db->query('INSERT INTO  tbl_colddrinks (COLDDRINKS, QTY, SIZE, PRICE) VALUES (:colddrinks, :qty, :size, :price)');
+      $this->db->query('INSERT INTO  tbl_colddrinks (COLDDRINKS, LARGE, MEDIUM, SMALL) VALUES (:colddrinks, :large, :medium, :small)');
 
       //Binding Variables
       $this->db->bind(':colddrinks', $data["COLDDRINKS"]);
-      $this->db->bind(':qty', $data["QTY"]);
-      $this->db->bind(':size', $data["SIZE"]);
-      $this->db->bind(':price', $data["PRICE"]);
+      $this->db->bind(':large', $data["LARGE"]);
+      $this->db->bind(':medium', $data["MEDIUM"]);
+      $this->db->bind(':small', $data["SMALL"]);
 
       //Return true or false, based on if query is successful or not
       if($this->db->execute()) {
@@ -55,14 +55,14 @@
     public function updateColddrinks($data, $id) {
 
       //Adding data to database
-      $this->db->query('UPDATE tbl_colddrinks SET COLDDRINKS = :colddrinks, QTY = :qty, SIZE = :size, PRICE = :price WHERE ID = :id');
+      $this->db->query('UPDATE tbl_colddrinks SET COLDDRINKS = :colddrinks, LARGE = :large, MEDIUM = :medium, SMALL = :small WHERE ID = :id');
 
       //Binding Variables
       $this->db->bind(':id', $id);
       $this->db->bind(':colddrinks', $data["COLDDRINKS"]).value;
-      $this->db->bind(':qty', $data["QTY"]).value;
-      $this->db->bind(':size', $data["SIZE"]).value;
-      $this->db->bind(':price', $data["PRICE"]).value;
+      $this->db->bind(':large', $data["LARGE"]).value;
+      $this->db->bind(':medium', $data["MEDIUM"]).value;
+      $this->db->bind(':small', $data["SMALL"]).value;
 
       //Return true or false, based on if query is successful or not
       if($this->db->execute()) {

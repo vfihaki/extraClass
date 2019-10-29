@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>updateColddrinks</title>
+    <title>addColddrinks</title>
 </head>
 <body>
         <nav class="navbar is-black" role="navigation" aria-label="main navigation">
@@ -30,16 +30,16 @@
                         HOME
                     </a>
                 
-                    <a class="navbar-item" href="menu.html">
+                    <a class="navbar-item" href="adminmenu.html">
                         MENU
                     </a>
-                    <a class="navbar-item" href="contact.html">
+                    <a class="navbar-item" href="admincontact.html">
                         CONTACT
                         </a>
-                    <a class="navbar-item" href="feedback.html">
+                    <a class="navbar-item" href="adminfeedback.html">
                         FEEDBACK
                     </a>
-                    <a class="navbar-item" href="openning&specials.html">
+                    <a class="navbar-item" href="adminopenning&specials.html">
                         OPENNING TIME & SPECIALS
                     </a>
                 </div>            
@@ -57,11 +57,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>ADD HOT DRINKS</h1>
+                    <h1>ADD COLD DRINKS</h1>
                     <form>                        
                         <div class="form-group">
-                            <label for="hotdrinks">HOTDRINKS</label>
-                            <input type="text" class="form-control" id="hotdrinks" aria-describedby="hotdrinks" placeholder="Add type of hotdrinks">
+                            <label for="colddrinks">COLDDRINKS</label>
+                            <input type="text" class="form-control" id="colddrinks" aria-describedby="colddrinks" placeholder="Add type of colddrinks">
                         </div>
                         <div class="form-group">
                             <label for="large">LARGE</label>
@@ -88,15 +88,15 @@
 
                 e.preventDefault();
             
-                let hotdrinks =document.querySelector('#hotdrinks').value
+                let colddrinks =document.querySelector('#colddrinks').value
                 let large =document.querySelector('#large').value
                 let medium =document.querySelector('#medium').value
                 let small =document.querySelector('#small').value
 
 
-                let data = {HOTDRINKS: hotdrinks, LARGE: large, MEDIUM: medium, SMALL: small}
+                let data = {COLDDRINKS: colddrinks, LARGE: large, MEDIUM: medium, SMALL: small}
 
-                fetch('http://localhost:9080/hotdrinks/addHotdrinks',{
+                fetch('http://localhost:9080/colddrinks/addColddrinks',{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

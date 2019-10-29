@@ -8,52 +8,92 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>UPDATE</title>
+    <title>updateColddrinks</title>
 </head>
 <body>
+        <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+            <div class="column column"> </div>
+            <div class="navbar-brand">
+                <a class="navbar-item" href="Home.html">
+                <img src="Images/images/black_logo.PNG" width="180" height="500">
+                </a>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+            </div>
+                  
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start has-font-navbar">
+                    <a class="navbar-item" href="home.html">
+                        HOME
+                    </a>
+                
+                    <a class="navbar-item" href="adminmenu.html">
+                        MENU
+                    </a>
+                    <a class="navbar-item" href="admincontact.html">
+                        CONTACT
+                        </a>
+                    <a class="navbar-item" href="adminfeedback.html">
+                        FEEDBACK
+                    </a>
+                    <a class="navbar-item" href="adminopenning&specials.html">
+                        OPENNING TIME & SPECIALS
+                    </a>
+                </div>            
+                <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons" >
+                    <a class="button is-light" href="logout.html">
+                        LOGOUT
+                    </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </nav> 
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>UPDATE COLDDRINKS</h1>
+                    <h1>UPDATE COLD DRINKS</h1>
                     <form>
                         <div class="form-group">
-                            <label for="colddrinks">TYPE OF COLDDRINKS</label>
+                            <label for="colddrinks">COLDDRINKS</label>
                             <input type="text" class="form-control" id="colddrinks" aria-describedby="colddrinks" placeholder="Add type of colddrinks">
                         </div>
                         <div class="form-group">
-                            <label for="qty">QTY</label>
-                            <input type="text" class="form-control" id="qty" placeholder="QTY">
+                            <label for="large">LARGE</label>
+                            <input type="text" class="form-control" id="large" placeholder="LARGE">
                         </div>
                         <div class="form-group">
-                            <label for="size">SIZE</label>
-                            <input type="text" class="form-control" id="size" placeholder="SIZE">
+                            <label for="medium">MEDIUM</label>
+                            <input type="text" class="form-control" id="medium" placeholder="MEDIUM">
                         </div>
                         <div class="form-group">
-                            <label for="price">PRICE</label>
-                            <input type="text" class="form-control" id="price" placeholder="PRICE">
+                            <label for="small">SMALL</label>
+                            <input type="text" class="form-control" id="small" placeholder="SMALL">
                         </div>
                         <a href="adminmenu.html">
-                        <button type="submit" class="btn btn-primary">UPDATE</button>
+                        <button type="submit" class="btn btn-primary" >UPDATE</button>
                         </a>
                     </form>
                 </div>
             </div>
         </div>
-
         <script>
 
                 let getID = parseInt((new URL(document.location).searchParams.get('id')))
     
-                fetch(`http://localhost:9080/colddrinks/showSingle/${getID}`)
+                fetch(`http://localhost:9080/colddrinks/showSingleColddrinks/${getID}`)
                     .then(resp => resp.json())
                     .then(data => {
     
-                    document.querySelector('#colddrinks').value = data["MSG"][0]["COLDDRINKS"].value
-                    document.querySelector('#qty').value = data["MSG"][0]["QTY"].value
-                    document.querySelector('#size').value = data["MSG"][0]["SIZE"].value
-                    document.querySelector('#price').value = data["MSG"][0]["PRICE"].value
-                    
-    
+                    document.querySelector('#colddrinks').value = data["MSG"][0]["COLDDRINKS"]
+                    document.querySelector('#large').value = data["MSG"][0]["LARGE"]
+                    document.querySelector('#medium').value = data["MSG"][0]["MEDIUM"]
+                    document.querySelector('#small').value = data["MSG"][0]["SMALL"]
                 })
     
                 let button = document.querySelector('button')
@@ -62,13 +102,13 @@
                     e.preventDefault();
                 
                     let colddrinks =document.querySelector('#colddrinks').value
-                    let qty =document.querySelector('#qty').value
-                    let size =document.querySelector('#size').value
-                    let price =document.querySelector('#price').value
+                    let large =document.querySelector('#large').value
+                    let medium =document.querySelector('#medium').value
+                    let small =document.querySelector('#small').value
     
-                    let data = {ID: getID, COLDDRINKS: colddrinks, QTY: qty, SIZE: size, PRICE: price}
+                    let data = {ID: getID, COLDDRINKS: colddrinks, LARGE: large, MEDIUM: medium, SMALL: small}
     
-                    fetch('http://localhost:9080/colddrinks/updateData',{
+                    fetch('http://localhost:9080/colddrinks/updateColddrinks',{
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'

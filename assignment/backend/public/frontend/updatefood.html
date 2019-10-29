@@ -14,23 +14,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>UPDATE Video</h1>
+                    <h1>UPDATE FOOD</h1>
                     <form>
                         <div class="form-group">
-                            <label for="food">TYPE OF FOOD</label>
+                            <label for="food">FOOD</label>
                             <input type="text" class="form-control" id="food" aria-describedby="food" placeholder="Add type of food">
-                        </div>
-                        <div class="form-group">
-                            <label for="qty">QTY</label>
-                            <input type="text" class="form-control" id="qty" placeholder="QTY">
                         </div>
                         <div class="form-group">
                             <label for="price">PRICE</label>
                             <input type="text" class="form-control" id="price" placeholder="PRICE">
                         </div>
-                        <a href="adminmenu.html">
                         <button type="submit" class="btn btn-primary">UPDATE</button>
-                        </a>
                     </form>
                 </div>
             </div>
@@ -40,13 +34,12 @@
 
                 let getID = parseInt((new URL(document.location).searchParams.get('id')))
     
-                fetch(`http://localhost:9080/food/showSingle/${getID}`)
+                fetch(`http://localhost:9080/food/showSingleFood/${getID}`)
                     .then(resp => resp.json())
                     .then(data => {
     
-                    document.querySelector('#food').value = data["MSG"][0]["FOOD"].value
-                    document.querySelector('#qty').value = data["MSG"][0]["QTY"].value
-                    document.querySelector('#price').value = data["MSG"][0]["PRICE"].value
+                    document.querySelector('#food').value = data["MSG"][0]["FOOD"]
+                    document.querySelector('#price').value = data["MSG"][0]["PRICE"]
                     
     
                 })
@@ -57,12 +50,11 @@
                     e.preventDefault();
                 
                     let food =document.querySelector('#food').value
-                    let qty =document.querySelector('#qty').value
                     let price =document.querySelector('#price').value
     
-                    let data = {ID: getID, FOOD: food, QTY: qty, PRICE: price}
+                    let data = {ID: getID, FOOD: food, PRICE: price}
     
-                    fetch('http://localhost:9080/food/updateData',{
+                    fetch('http://localhost:9080/food/updateFood',{
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'

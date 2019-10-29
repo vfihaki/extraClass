@@ -27,14 +27,14 @@ class Colddrinks extends Controller {
   }
 
   public function addColddrinks() {
-      $data = json_decode(file_get_contents("php://input"), true);
+    $data = json_decode(file_get_contents("php://input"), true);
 
-      if($this->rest->addColddrinks($data)) {
-          echo json_encode(array("MSG" => "Record Added Successfully", "Data" => $data, "CODE" => 201));
-      } else {
-          echo json_encode(array("MSG" => "Record was not added", "Data" => $data));
-      }
-  }
+    if($this->rest->addColddrinks($data)) {
+        echo json_encode(array("MSG" => "Record Added Successfully", "Data" => $data, "CODE" => 201));
+    } else {
+        echo json_encode(array("MSG" => "Record was not added", "Data" => $data));
+    }
+}
 
   public function updateColddrinks() {
 
