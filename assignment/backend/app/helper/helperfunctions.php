@@ -22,13 +22,13 @@
         return intval($id);
     }
 
-    // function getLoginFromURL() {
-    //     $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    //     $urlArray = explode('/', $url);
-    //     $id = $urlArray[5], $urlArray[6];
+    function getLoginFromURL() {
+        $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $urlArray = explode('/', $url);
+        $id = [$urlArray[5], $urlArray[6]];
 
-    //     return $login;
-    // }
+        return $id;
+    }
 
     function myTryParse($url) {
 

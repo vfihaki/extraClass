@@ -166,6 +166,40 @@ $target.classList.toggle('is-active');
 
 });
     </script>
+
+<script>
+
+  fetch('http://localhost:9080/Login/login/{$username}/{$password}')
+  .then(response => response.json())
+  .then(data => {
+   
+  let results = data["MSG"].map(a => 
+      
+      `
+                  <table class="table">
+          
+          <tr>
+              <th>${a["HOTDRINKS"]}</th>
+              <td></td>
+              <td></td>
+              <td>${a["LARGE"]}</td>
+              <td></td>
+              <td></td>
+              <td>${a["MEDIUM"]}</td>
+              <td></td>
+              <td></td>
+              <td>${a["SMALL"]}</td>
+          </tr>
+      </table>
+
+         
+      
+      `
+      ).join("<br>")
+
+      document.querySelector('#app').innerHTML = results;
+  })
+  </script>
      <footer class="footer is-brown">
         <div class="container">
           <p class="column has-text-right has-text-white">

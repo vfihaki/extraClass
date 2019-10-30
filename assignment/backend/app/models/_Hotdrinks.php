@@ -88,5 +88,16 @@
           return false;
       }
     }
+
+    public function removePerson() {
+      $id = myTryParse($_GET['url']);
+      if($id > 0) {
+          if($this->people->removePerson($id)) {
+              //Redirect to home page
+              header("Location: ".URLROOT."frontend/adminmenu");
+              exit;
+          }
+      }
+    }
   }
 ?>

@@ -14,10 +14,13 @@ class Login extends Controller {
   }
 
   public function login() {
+    $login = getLoginFromURL()
+    $username = $login[0];
+    $password = $login[1];
     echo json_encode(["MSG" => $this->rest->login(getLoginFromURL())]);
   }
 
-
+}
 
 
   
